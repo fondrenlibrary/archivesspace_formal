@@ -1,5 +1,6 @@
+<%# use ? to do non greed match to remove all tags and their attributes by Mang 05092015 %>
 <%
-   record_title = @archival_object.title
+   record_title = @archival_object.title.gsub(/<.*?>/,'').html_safe()
    set_title(record_title)
 %>
 <%= render_aspace_partial(:partial => 'title_pane',

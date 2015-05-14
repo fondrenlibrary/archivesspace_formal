@@ -31,6 +31,9 @@
               }
 
               $(json.direct_children).each(function (idx, child) {
+              //the following two lines to use non greedy regex to remove html tags added by Mang 05082015
+		child.title=child.title.replace(/<.*?>/g,"");
+		//console.log(child.title.replace(/<.*?>/g,"");
                 var $node = AS.renderTemplate("template_record_tree_node", child);
                 var elt = $("<li>").text(child.title);
                 container.append($node);

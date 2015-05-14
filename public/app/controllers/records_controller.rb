@@ -38,7 +38,7 @@ class RecordsController < ApplicationController
         @breadcrumbs.push([record["title"], url_for(:controller => :records, :action => :archival_object, :id => record["id"], :repo_id => @repository.id), "archival_object"])
       end
     end
-
+   
     @breadcrumbs.push([@archival_object.display_string, "#", "archival_object"])
   end
 
