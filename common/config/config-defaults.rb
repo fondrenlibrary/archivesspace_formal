@@ -6,7 +6,7 @@ AppConfig[:solr_home_directory] = proc { File.join(AppConfig[:data_directory], "
 AppConfig[:solr_indexing_frequency_seconds] = 30
 AppConfig[:solr_facet_limit] = 100
 
-AppConfig[:default_page_size] = 10
+AppConfig[:default_page_size] = 20
 AppConfig[:max_page_size] = 250
 
 # Log level for the backend, values: (everything) debug, info, warn, error, fatal (severe only)
@@ -49,12 +49,13 @@ AppConfig[:solr_backup_directory] = proc { File.join(AppConfig[:data_directory],
 AppConfig[:solr_backup_schedule] = "0 * * * *"
 AppConfig[:solr_backup_number_to_keep] = 1
 
-AppConfig[:backend_url] = "http://localhost:8089"
-AppConfig[:frontend_url] = "http://localhost:8080"
+#AppConfig[:backend_url] = "http://localhost:8089"
+AppConfig[:backend_url] = "http://10.74.22.26:4567"
+AppConfig[:frontend_url] = "http://localhost:3000"
 AppConfig[:frontend_prefix] = proc { "#{URI(AppConfig[:frontend_url]).path}/".gsub(%r{/+$}, "/") }
 AppConfig[:solr_url] = "http://localhost:8090"
 AppConfig[:indexer_url] = "http://localhost:8091"
-AppConfig[:public_url] = "http://localhost:8081"
+AppConfig[:public_url] = "http://localhost:3001"
 AppConfig[:public_prefix] = proc { "#{URI(AppConfig[:public_url]).path}/".gsub(%r{/+$}, "/") }
 
 # Setting any of the four keys below to false will prevent the associated
@@ -90,8 +91,10 @@ AppConfig[:jetty_shutdown_path] = "/xkcd"
 #
 AppConfig[:backend_instance_urls] = proc { [AppConfig[:backend_url]] }
 
-AppConfig[:frontend_theme] = "default"
-AppConfig[:public_theme] = "default"
+#AppConfig[:frontend_theme] = "default"
+AppConfig[:frontend_theme] = "ricefon"
+#AppConfig[:public_theme] = "default"
+AppConfig[:public_theme] = "ricefon"
 
 AppConfig[:session_expire_after_seconds] = 3600
 
@@ -123,6 +126,7 @@ AppConfig[:report_pdf_font_family] = "\"DejaVu Sans\", sans-serif"
 
 # Plug-ins to load. They will load in the order specified
 AppConfig[:plugins] = ['local',  'aspace-public-formats']
+#AppConfig[:plugins] = ['aspace-public-formats']
 
 # URL to direct the feedback link
 # You can remove this from the footer by making the value blank. 
@@ -132,7 +136,7 @@ AppConfig[:feedback_url] = "http://archivesspace.org/feedback"
 # 
 # The following are used by the aspace-public-formats plugin
 # https://github.com/archivesspace/aspace-public-formats
-AppConfig[:public_formats_resource_links] = []
+AppConfig[:public_formats_resource_links] = ['ead_pdf']
 AppConfig[:public_formats_digital_object_links] = []
 AppConfig[:xsltproc_path] = nil
 AppConfig[:xslt_path] = nil
