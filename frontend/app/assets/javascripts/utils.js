@@ -186,6 +186,7 @@ $(function() {
 
       var $addon = "<span class='input-group-addon'><i class='glyphicon glyphicon-calendar'></i></span>"
       $dateInput.after($addon);
+      $dateInput.data("forceParse",false);//Added by Mang to turn off validity check
 
       $dateInput.parent(".date").datepicker($dateInput.data());
     });
